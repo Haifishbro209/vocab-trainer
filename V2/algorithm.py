@@ -7,9 +7,9 @@ def randomReturn(size):
     vocab_list  = []
     for word in choosen_vocab:
         obj = {"french": word.french,
-               "german": word.german}
+               "german": word.german,
+               "id": word.id}
         vocab_list.append(obj)
-    print(vocab_list)
     return vocab_list
 if __name__ == "__main__":
     pass

@@ -19,15 +19,12 @@ def history():
 def send():
     input = ui.get_input_entry()
     if input != vocab[index]["french"]:
-        wrongChars = []
+        wrongChars = 0
         for i in range(min(len(vocab[index]["french"]), len(input))): #makes the x in range of the longer string
             if vocab[index]["french"][i] != input[i]:
-                wrongChars.append(i)
+                wrongChars += 1
 
-        for i in wrongChars:
-            ui.input_entry.tag_add("highlight",f"1.{i}",f"1.{i+1}")
-            ui.input_entry.tag_configure("highlight", background="#5b6103", foreground="black")
-
+        
 
         ui.input_entry.config(bg="#2a0000")
         ui.set_vokabel_label(f'"{vocab[index]["german"]}" - "{vocab[index]["french"]}"')
