@@ -36,8 +36,6 @@ class UI:
         self.vokabel_label = tk.Label(self.root, bg='#2a2a2a', fg='#00ff00', font=('Arial', 36), padx=20, pady=10, text="")
         self.vokabel_label.place(relx=0.5, rely=0.3, anchor="center")
 
-        self.correction_Label = tk.Label(self.root, bg='#1a1a1a', fg='#00ff00', font=('Arial', 16), padx=20, pady=10, text="")
-        self.correction_Label.place(relx=0.5, rely=0.45, anchor="center")
 
         self.input_entry = tk.Entry(self.root, bg='#2a2a2a', fg='#00ff00', insertbackground='#00ff00', font=('Arial', 20), width=30)
         self.input_entry.place(relx=0.5, rely=0.6, anchor="center")
@@ -45,6 +43,10 @@ class UI:
         send_button = tk.Button(self.root, text="Senden", bg='#2a2a2a', fg='#00ff00', font=('Arial', 16), padx=20, pady=5, command=self.send_callback)
         send_button.place(relx=0.5, rely=0.7, anchor="center")
 
+    def resetQueryUI(self):
+        self.input_entry.config(bg='#2a2a2a', fg='#00ff00', insertbackground='#00ff00', font=('Arial', 20), width=30)
+        self.input_entry.delete(0,tk.END)
+            
     def clear_frame(self):
         for widget in self.root.winfo_children():
             widget.destroy()

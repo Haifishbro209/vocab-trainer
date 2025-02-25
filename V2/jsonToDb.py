@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, ForeignKey, Column, String,Integer,CHAR
 from sqlalchemy.orm import declarative_base, sessionmaker
 import json
 
-engine = create_engine('sqlite:///vocs.db')
+engine = create_engine('sqlite:///db.db')
 Base = declarative_base()
 
 class Item(Base):
