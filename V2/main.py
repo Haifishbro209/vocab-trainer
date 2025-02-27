@@ -1,7 +1,8 @@
 from UI import UI
 from algorithm import randomReturn
-from DataBase import addQuery
+from DataBase import addQuery, getQueries
 from time import sleep as sp
+from sys import exit
 
 def analytics():
     print("Analytics function executed")
@@ -15,8 +16,16 @@ def start_query():
     ui.set_vokabel_label(vocab[index]["german"])
 
 def history():
-    print("History function executed")
-
+    getQueries(3)
+    info = [
+    ("Alice", "123456", "alice@example.com"),
+    ("Bob", "789101", "bob@example.com"),
+    ("Charlie", "112131", "charlie@example.com"),
+    ("David", "415161", "david@example.com"),
+    ("Eva", "718192", "eva@example.com")]
+    ui.clear_frame()
+    ui.historyUI(info)
+    
 def nextWord():
     global index 
     index += 1
@@ -54,6 +63,6 @@ def send():
         ui.root.after(2000,nextWord)
 
 
-ui = UI(analytics, start_query, history, send)
+ui = UI(analytics, start_query, history, send,exit)
 ui.homeUI()
 ui.root.mainloop()

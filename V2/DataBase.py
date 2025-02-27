@@ -31,6 +31,11 @@ Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 
+def getQueries(count):
+    queries = session.query(Query).order_by(Query.timestamp.desc()).limit(count).all()
+    for query in queries:
+        print(query.error_rate)
+    return queries
 
 def addQuery(vocab_id,error_rate):
     # Eine neue Abfrage erstellen und mit der Vokabel verknüpfen
