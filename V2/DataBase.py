@@ -20,7 +20,6 @@ class Query(Base):
     
     id = Column(Integer,primary_key=True)                                #filled automatically
     vocab_id = Column(Integer, ForeignKey("vocs.id") , nullable = False)
-    success = Column(Boolean, nullable= False)
     error_rate = Column(Float, nullable= False)
     timestamp = Column(DateTime, default=datetime.utcnow, nullable=False) #filled automatically
     
@@ -37,7 +36,7 @@ def addQuery(vocab_id,error_rate):
     # Eine neue Abfrage erstellen und mit der Vokabel verknüpfen
     if error_rate == 0:
         success = True
-    query = Query(vocab_id= vocab_id, success= success, error_rate=error_rate)
+    query = Query(vocab_id= vocab_id, error_rate=error_rate)
 
     session.add(query)
     session.commit()

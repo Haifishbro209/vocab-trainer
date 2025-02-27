@@ -1,5 +1,5 @@
 from UI import UI
-from algorithm import *
+from algorithm import randomReturn
 from DataBase import addQuery
 from time import sleep as sp
 
@@ -10,7 +10,7 @@ def start_query():
     global vocab
     global index
     ui.queryUI()  
-    vocab = randomReturn(30)
+    vocab = randomReturn(5)
     index = 0
     ui.set_vokabel_label(vocab[index]["german"])
 
@@ -24,9 +24,12 @@ def nextWord():
     ui.resetQueryUI()
 
 def send():
-    global index
+    global index,lastindex  
+    
     input = ui.get_input_entry()
-    lastindex = 0 
+
+    if 'lastindex' not in globals():
+        lastindex = -1
     if lastindex !=index:
         lastindex = index
         wiederholung = False
@@ -37,10 +40,10 @@ def send():
         for i in range(min(len(vocab[index]["french"]), len(input))): #makes the x in range of the longer string
             if vocab[index]["french"][i] != input[i]:
                 wrongChars += 1
-            errorRate = round(wrongChars/i,2)
+        errorRate = wrongChars/round(max(len(vocab[index]["french"]), len(input)),2)
 
         if not wiederholung:
-            addQuery(vocab[index]["id"],error_rate = errorRate)          #add query to db
+            addQuery(vocab[index]["id"],error_rate = round(errorRate,4))         #add query to db
         ui.input_entry.config(bg="#2a0000")
         ui.set_vokabel_label(f'"{vocab[index]["german"]}" - "{vocab[index]["french"]}"')
     else:
