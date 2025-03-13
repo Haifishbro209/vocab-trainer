@@ -69,7 +69,7 @@ class UI:
         return None
     def endUI(self):
         custom_dialog = tk.Toplevel(self.root)
-        custom_dialog.geometry(f"300x150+800+450")  # Breite x Höhe + X-Position + Y-Position
+        custom_dialog.geometry(f"300x150+800+450") 
         custom_dialog.resizable(False,False)
         custom_dialog.configure(bg='#1a1a1a')
 
@@ -79,7 +79,7 @@ class UI:
         button_frame = tk.Frame(custom_dialog, bg='#1a1a1a')
         button_frame.pack(pady=10)
 
-        home_button = tk.Button(button_frame, text="Home", command=self.homeUI, bg='#2a2a2a', fg='#00ff00', font=('Arial', 12), padx=20, pady=5)
+        home_button = tk.Button(button_frame, text="Home", command=lambda: [custom_dialog.destroy(), self.homeUI()], bg='#2a2a2a', fg='#00ff00', font=('Arial', 12), padx=20, pady=5)
         home_button.pack(side=tk.LEFT, padx=10)
 
         exit_button = tk.Button(button_frame, text="Exit", command=self.exit_callback, bg='#2a2a2a', fg='#00ff00', font=('Arial', 12), padx=20, pady=5)

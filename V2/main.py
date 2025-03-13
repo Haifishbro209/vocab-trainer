@@ -9,9 +9,11 @@ def analytics():
 
 def start_query():
     global vocab
+    global number_of_Vocab_per_Query
     global index
-    ui.queryUI()  
-    vocab = randomReturn(5)
+    ui.queryUI() 
+    number_of_Vocab_per_Query = 50
+    vocab = randomReturn(number_of_Vocab_per_Query)
     index = 0
     ui.set_vokabel_label(vocab[index]["german"])
 
@@ -27,13 +29,15 @@ def history():
     
 def nextWord():
     global index 
-    index += 1
-    ui.set_vokabel_label(vocab[index]["german"])
-    ui.resetQueryUI()
-
+    if index != number_of_Vocab_per_Query -1:
+        index += 1
+        ui.set_vokabel_label(vocab[index]["german"])
+        ui.resetQueryUI()
+    else:
+        ui.endUI()
 def send():
     global index,lastindex  
-    
+    global number_of_Vocab_per_Query
     input = ui.get_input_entry()
 
     if 'lastindex' not in globals():
@@ -59,7 +63,10 @@ def send():
             addQuery(vocab[index]["id"],error_rate = 0)          #add query to db
         #add query to db
         ui.input_entry.config(bg="#082a00")
-        ui.root.after(2000,nextWord)
+        if index != number_of_Vocab_per_Query:
+            ui.root.after(2000,nextWord)
+        else:
+            nextWord()
 
 
 ui = UI(analytics, start_query, history, send,exit)
