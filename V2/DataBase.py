@@ -33,14 +33,9 @@ session = Session()
 
 def getQueries(count):
     queries = session.query(Query).order_by(Query.timestamp.desc()).limit(count).all()
-    for query in queries:
-        print(query.error_rate)
-    return queries
+    return queries #this is probably an Array        #to acces atributes of the query opbject use query.nameOfTheAtribute
 
 def addQuery(vocab_id,error_rate):
-    # Eine neue Abfrage erstellen und mit der Vokabel verknüpfen
-    if error_rate == 0:
-        success = True
     query = Query(vocab_id= vocab_id, error_rate=error_rate)
 
     session.add(query)

@@ -4,7 +4,7 @@ from tkinter import ttk
 class UI:
     def __init__(self, analytics_callback, start_query_callback, history_callback, send_callback,exit_callback):
         self.root = tk.Tk()
-        self.root.state("zoomed")
+        self.root.attributes("-zoomed", True)
         self.root.resizable(False, False)
         self.root.title("Vokab")
         self.root.configure(bg='#1a1a1a')
@@ -94,17 +94,17 @@ class UI:
         
         style.map('Treeview', background=[('selected', '#00ff00')], foreground=[('selected', '#1a1a1a')])
         
-        columns = ('Vocab', 'Error_rate', 'timestamp')
+        columns = ('Vocab', 'Error_rate', 'Timestamp')
     
         tree = ttk.Treeview(window, columns=columns, show='headings')
     
         tree.heading('Vocab', text='Vocab')
         tree.heading('Error_rate', text='Error rate')
-        tree.heading('timestamp', text='timestamp')
+        tree.heading('Timestamp', text='Timestamp')
         
-        tree.column('Vocab', width=150)
-        tree.column('Error_rate', width=150)
-        tree.column('timestamp', width=200)
+        tree.column('Vocab', width=166)
+        tree.column('Error_rate', width=166)
+        tree.column('Timestamp', width=166)
     
         for contact in info:
             tree.insert('', tk.END, values=contact)

@@ -16,13 +16,12 @@ def start_query():
     ui.set_vokabel_label(vocab[index]["german"])
 
 def history():
-    getQueries(3)
-    info = [
-    ("Alice", "123456", "alice@example.com"),
-    ("Bob", "789101", "bob@example.com"),
-    ("Charlie", "112131", "charlie@example.com"),
-    ("David", "415161", "david@example.com"),
-    ("Eva", "718192", "eva@example.com")]
+    queries= getQueries(100)
+    info  = []
+    for query in queries:
+        print(query.error_rate,query.timestamp,query.vocab.french)
+        obj = (query.vocab.french,str(query.error_rate),str(query.timestamp))
+        info.append(obj)
     ui.clear_frame()
     ui.historyUI(info)
     
