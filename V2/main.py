@@ -5,14 +5,13 @@ from time import sleep as sp
 from sys import exit
 
 def analytics():
-    print("Analytics function executed")
-
+    ui.analyticsUI()
 def start_query():
     global vocab
     global number_of_Vocab_per_Query
     global index
     ui.queryUI() 
-    number_of_Vocab_per_Query = 50
+    number_of_Vocab_per_Query = 3
     vocab = randomReturn(number_of_Vocab_per_Query)
     index = 0
     ui.set_vokabel_label(vocab[index]["german"])

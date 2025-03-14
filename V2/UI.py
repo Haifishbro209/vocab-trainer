@@ -1,11 +1,11 @@
 import tkinter as tk
 from tkinter import ttk
-
+from analyticsGUI import AnalyticsUI
 class UI:
     def __init__(self, analytics_callback, start_query_callback, history_callback, send_callback,exit_callback):
         self.root = tk.Tk()
-        self.root.attributes("-zoomed", True)
-        self.root.resizable(False, False)
+        #self.root.attributes("-zoomed", True)
+        #self.root.resizable(False, False)
         self.root.title("Vokab")
         self.root.configure(bg='#1a1a1a')
         self.root.iconphoto(True, tk.PhotoImage(file='img/icon.png'))
@@ -128,3 +128,6 @@ class UI:
     
         window.grid_rowconfigure(0, weight=1)
         window.grid_columnconfigure(0, weight=1)
+    
+    def analyticsUI(self):
+        ui = AnalyticsUI(self.root,lambda: self.homeUI)
