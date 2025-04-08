@@ -31,6 +31,8 @@ Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 
+
+
 def getQueries(count):
     queries = session.query(Query).order_by(Query.timestamp.desc()).limit(count).all()
     return queries #this is probably an Array        #to acces atributes of the query opbject use query.nameOfTheAtribute
@@ -40,3 +42,9 @@ def addQuery(vocab_id,error_rate):
 
     session.add(query)
     session.commit()
+
+def addVocab(french, german):
+    vocab = Vocab(french=french, german=german)
+    session.add(vocab)
+    session.commit()
+    return vocab  # Returns the newly created vocab object

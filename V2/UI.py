@@ -8,7 +8,7 @@ class UI:
         #self.root.resizable(False, False)
         self.root.title("Vokab")
         self.root.configure(bg='#1a1a1a')
-        self.root.iconphoto(True, tk.PhotoImage(file='img/icon.png'))
+        #self.root.iconphoto(True, tk.PhotoImage(file='img/icon.png'))
 
         self.analytics_callback = analytics_callback
         self.start_query_callback = start_query_callback

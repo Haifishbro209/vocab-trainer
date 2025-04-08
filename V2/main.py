@@ -11,7 +11,7 @@ def start_query():
     global number_of_Vocab_per_Query
     global index
     ui.queryUI() 
-    number_of_Vocab_per_Query = 3
+    number_of_Vocab_per_Query = 30
     vocab = randomReturn(number_of_Vocab_per_Query)
     index = 0
     ui.set_vokabel_label(vocab[index]["german"])
